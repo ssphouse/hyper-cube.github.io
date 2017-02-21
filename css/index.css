@@ -1,3 +1,41 @@
+/*
+ * === GENERAL PROPERTIES ===
+ */
+body {
+  font-family: 'Oxygen', sans-serif;
+  text-align: center;
+}
+h1, h3 {
+  color: white;
+  font-weight: bold;
+  font-size: 50px;
+  text-transform: uppercase;
+  text-shadow: 0 4px 4px rgba(0,0,0,0.3);
+}
+h3 {font-size: 20px;}
+
+.to-right {
+  display: inline-block;
+  position: relative;
+  margin: 50% 75%;
+}
+.center {
+  position: relative;
+  top: 25%;
+}
+
+#social a {
+  border: 0;
+  padding: 6px;
+  opacity: 0.5;
+  transition: opacity 0.5s;
+}
+#social a:hover {opacity: 1;}
+#social {height: 32px;}
+
+/*
+ * === PROPERTIES FOR THE CUBE ===
+ */
 .container {
   margin: 12% auto;
   width: 500px;
@@ -18,16 +56,33 @@
   height: 500px;
   display: block;
   position: absolute;
-  border: 1px solid rgba(0,0,0,0.8);
-  background: rgba(2,0,60,0.4);
 }
 
-#cube .front  {transform: rotateY(0deg) translateZ(250px);}
-#cube .back   {transform: rotateX(180deg) translateZ(250px);}
-#cube .right  {transform: rotateY(90deg) translateZ(250px);}
-#cube .left   {transform: rotate(-90deg) translateZ(250px);}
-#cube .top    {transform: rotateX(90deg) translateZ(250px);}
-#cube .bottom {transform: rotateX(-90deg) translateZ(250px);}
+/* -- Moving the sides into place -- */
+#cube .front  {
+  transform: rotateY(0deg) translateZ(250px);
+  background: #38A265;
+}
+#cube .back   {
+  transform: rotateX(180deg) translateZ(250px);
+  background: #269253;
+}
+#cube .right  {
+  transform: rotateY(90deg) translateZ(250px);
+  background: #2d9a56;
+}
+#cube .left   {
+  transform: rotateY(-90deg) translateZ(250px);
+  background: #2e8e68;
+}
+#cube .top    {
+  transform: rotateX(90deg) translateZ(250px);
+  background: #44a27d;
+}
+#cube .bottom {
+  transform: rotateX(-90deg) translateZ(250px);
+  background: #3d8c53;
+}
 
 #cube.show-front  {transform: translateZ(-250px) rotateY(0deg);}
 #cube.show-back   {transform: translateZ(-250px) rotateX(-180deg);}
