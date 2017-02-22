@@ -1,31 +1,48 @@
 function init() {
   initButtons();
+  changeSubtitle();
   hover();
 }
 
 function initButtons() {
-  $('h3').click(function() {
+  $('button').click(function() {
     switch(this.classList[0]) {
       case "to-front":
-        $("#cube").toggleClass("show-front");
+        $("#cube").attr('class', "show-front");
         break;
       case "to-back":
-        $("#cube").toggleClass("show-back");
+        $("#cube").attr('class', "show-back");
         break;
       case "to-left":
-        $("#cube").toggleClass("show-left");
+        $("#cube").attr('class', "show-left");
         break;
       case "to-right":
-        $("#cube").toggleClass("show-right");
+        $("#cube").attr('class', "show-right");
         break;
       case "to-top":
-        $("#cube").toggleClass("show-top");
+        $("#cube").attr('class', "show-top");
         break;
       case "to-bottom":
-        $("#cube").toggleClass("show-bottom");
+        $("#cube").attr('class', "show-bottom");
         break;
     }
   });
+}
+
+function changeSubtitle() {
+  $('#social a').mouseenter(function() {
+    var link = this;
+    $('#subtitle').fadeTo(200, 0.01, function() {
+      $('#subtitle').text($(link).children().attr("alt"));
+      $('#subtitle').fadeTo(200, 1);
+    });
+  })
+  $('#social a').mouseleave(function() {
+    $('#subtitle').fadeTo(200, 0.01, function() {
+      $('#subtitle').text("Front-End Developer");
+      $('#subtitle').fadeTo(200, 1);
+    });
+  })
 }
 
 function hover() {
