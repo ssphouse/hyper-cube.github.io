@@ -29,20 +29,21 @@ function initButtons() {
   });
 }
 
+function subtitleFade(subText) {
+  $('#subtitle').stop(true,false).fadeTo();
+  $('#subtitle').fadeTo(200, 0.01, function() {
+    $('#subtitle').text(subText);
+    $('#subtitle').fadeTo(200, 1);
+  });
+}
+
 function changeSubtitle() {
   $('#social a').mouseenter(function() {
-    var link = this;
-    $('#subtitle').fadeTo(200, 0.01, function() {
-      $('#subtitle').text($(link).children().attr("alt"));
-      $('#subtitle').fadeTo(200, 1);
-    });
-  })
+    subtitleFade($(this).children().attr("alt"));
+  });
   $('#social a').mouseleave(function() {
-    $('#subtitle').fadeTo(200, 0.01, function() {
-      $('#subtitle').text("Front-End Developer");
-      $('#subtitle').fadeTo(200, 1);
-    });
-  })
+    subtitleFade("Front-End Developer");
+  });
 }
 
 function hover() {
