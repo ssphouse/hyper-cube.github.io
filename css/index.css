@@ -1,9 +1,12 @@
 /*
  * === GENERAL PROPERTIES ===
  */
-body {
+
+html {
   font-family: 'Oxygen', sans-serif;
   text-align: center;
+  background: linear-gradient(#141422, #0a0a10) no-repeat center center fixed;
+  background-size: cover;
 }
 h1, button {
   color: white;
@@ -11,7 +14,9 @@ h1, button {
   text-transform: uppercase;
   text-shadow: 0 4px 4px rgba(0,0,0,0.3);
 }
-h1 {font-size: 50px;}
+h1 {
+  font-size: 50px;
+}
 
 
 .center {
@@ -107,9 +112,9 @@ button:hover {
   background: #0a4c29;
 }
 
-#cube.show-front  {transform: rotateY(90deg) translateX(50%) rotateY(-90deg);}
+#cube.show-front  {transform: rotateY(90deg)  translateX(50%) rotateY(-90deg);}
 #cube.show-back   {transform: rotateY(180deg) rotateX(90deg) translateY(50%) rotateX(-90deg);}
-#cube.show-left   {transform: rotateY(90deg) translateX(50%);}
+#cube.show-left   {transform: rotateY(90deg)  translateX(50%);}
 #cube.show-right  {transform: rotateY(-90deg) translateX(-50%);}
 #cube.show-top    {transform: rotateX(-90deg) translateY(50%);}
-#cube.show-bottom {transform: rotateX(90deg) translateY(-50%);}
+#cube.show-bottom {transform: rotateX(90deg)  translateY(-50%);}
