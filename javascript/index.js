@@ -1,9 +1,9 @@
 function init() {
   initButtons();
   changeSubtitle();
-  hover();
 }
 
+// Control which side we want facing
 function initButtons() {
   $('button').click(function() {
     switch(this.classList[0]) {
@@ -29,14 +29,16 @@ function initButtons() {
   });
 }
 
+// Fade animation for the subtitle
 function subtitleFade(subText) {
-  $('#subtitle').stop(true,false).fadeTo();
+  $('#subtitle').stop(true, false).fadeTo();
   $('#subtitle').fadeTo(200, 0.01, function() {
     $('#subtitle').text(subText);
     $('#subtitle').fadeTo(200, 1);
   });
 }
 
+// Change subtitle to whatever we're hovering over
 function changeSubtitle() {
   $('#social a').mouseenter(function() {
     subtitleFade($(this).children().attr("alt"));
@@ -45,14 +47,5 @@ function changeSubtitle() {
     subtitleFade("Front-End Developer");
   });
 }
-
-function hover() {
-  document.onmousemove = function(event) {
-    cube = document.getElementById("cube").children;
-    for (i = 0; i < cube.length; i++) {
-    }
-  }
-}
-
 
 init();
