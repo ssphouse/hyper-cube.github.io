@@ -17,13 +17,10 @@ h1, button {
 h1 {
   font-size: 50px;
 }
-
-
 .center {
   position: relative;
   top: 25%;
 }
-
 #subtitle {
   color: rgba(255,255,255,.5);
   top: 50%;
@@ -71,6 +68,7 @@ button:hover {
   height:500px;
   position: relative;
   perspective: 1000px;
+  z-index: 1000;
 }
 #cube {
   width: 100%;
@@ -89,7 +87,7 @@ button:hover {
 /* -- Moving the sides into place -- */
 #cube .front  {
   transform: rotateY(-90deg) translateX(50%) rotateY(90deg);
-  background: #38A265;
+  background: #1a7941;
 }
 #cube .back   {
   transform: rotateY(180deg) rotateX(90deg) translateY(50%) rotateX(-90deg);
@@ -118,3 +116,17 @@ button:hover {
 #cube.show-right  {transform: rotateY(-90deg) translateX(-50%);}
 #cube.show-top    {transform: rotateX(-90deg) translateY(50%);}
 #cube.show-bottom {transform: rotateX(90deg)  translateY(-50%);}
+
+/*
+ * === PARTICLE EFFECTS ===
+ */
+.particles {
+  background-color: rgba(23,27,39,0.5);
+  width: 3px;
+  height: 3px;
+  position: absolute;
+  border-radius: 50%;
+}
+.particles span {
+  z-index: 1;
+}
