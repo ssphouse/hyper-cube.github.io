@@ -121,11 +121,11 @@ button:hover {
  * === PARTICLE EFFECTS ===
  */
 .particles {
-  background-color: rgba(23,27,39,0.5);
   width: 3px;
   height: 3px;
   position: absolute;
   border-radius: 50%;
+  transition: all 6s ease-in-out;
 }
 .particles span {
   z-index: 1;
