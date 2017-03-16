@@ -7,42 +7,62 @@ function init() {
 }
 
 function initCube() {
+  // Init cube size. Using CSS for this breaks things on page load
+  $(document).ready(function() {
+    resizeCube();
+  })
+
   // Make the Container responsive
   $(window).resize(function() {
-    var size = ($(document).width() * 0.35).toString();
-    $('.container').css({
-      "width": size + 'px',
-      "height": size + 'px'
-    });
+    resizeCube();
+  });
+
+  // Hover Effect: Rotate cube to track mouses
+  $(document).on("mousemove", function(event) {
+    var ax = -($(window).innerWidth()/2- event.pageX)/20;
+    var ay = ($(window).innerHeight()/2- event.pageY)/10;
+    $('#cube').attr("style", "transform: rotateY("+ax+"deg) rotateX("+ay+"deg);" +
+      "-webkit-transform: rotateY("+ax+"deg) rotateX("+ay+"deg);" +
+      "-moz-transform: rotateY("+ax+"deg) rotateX("+ay+"deg)");
+  })
+}
+
+function resizeCube() {
+  var size = ($(document).width() * 0.15).toString();
+  $('.container').css({
+    "width": size + 'px',
+    "height": size + 'px'
   });
 }
 
 // Control which side we want facing
 function changeSides() {
-  $('button').click(function() {
-    switch(this.classList[0]) {
-      case 'to-front':
+  $('.nav-item').click(function() {
+    switch($(this).attr('class')) {
+      case 'nav-item to-front':
         $('#cube').attr('class', 'show-front');
         break;
-      case 'to-back':
+      case 'nav-item to-back':
         $('#cube').attr('class', 'show-back');
         break;
-      case 'to-left':
+      case 'nav-item to-left':
         $('#cube').attr('class', 'show-left');
         break;
-      case 'to-right':
+      case 'nav-item to-right':
+        console.log("hi");
         $('#cube').attr('class', 'show-right');
-        $('#cube').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend',
+        $('#cube').one('webkitTransitionEnd otransitionend oTransitionEnd ' +
+          'msTransitionEnd transitionend',
           function(event) {
             if (event.target.id == "projects") {
               console.log("hi");
             }
         });
         break;
-      case 'to-top':
+      case 'nav-item to-top':
         $('#cube').attr('class', 'show-top');
         break;
-      case 'to-bottom':
+      case 'nav-item to-bottom':
         $('#cube').attr('class', 'show-bottom');
         break;
     }
@@ -97,7 +117,6 @@ function moveParticle() {
       $(this).css('left', y.toString() + 'px');
     });
   }, 4000);
-
 }
 
 function changeParticleColor() {
@@ -119,6 +138,5 @@ function rand(start, end, decimal=false) {
     result = Math.floor((Math.random() * end) + start);
   return result.toString();
 }
-
 
 init();
