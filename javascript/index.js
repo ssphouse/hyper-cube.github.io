@@ -24,7 +24,7 @@ function initCube() {
     $('#cube').attr("style", "transform: rotateY("+ax+"deg) translateX(-50%) rotateX("+ay+"deg);" +
       "-webkit-transform: rotateY("+ax+"deg) rotateX("+ay+"deg);" +
       "-moz-transform: rotateY("+ax+"deg) rotateX("+ay+"deg)");
-  })
+  });
 }
 
 function resizeCube() {
