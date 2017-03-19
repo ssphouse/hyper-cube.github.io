@@ -19,9 +19,9 @@ function initCube() {
 
   // Hover Effect: Rotate cube to track mouses
   $(document).on("mousemove", function(event) {
-    var ax = -($(window).innerWidth()/2- event.pageX)/20;
-    var ay = ($(window).innerHeight()/2- event.pageY)/10;
-    $('#cube').attr("style", "transform: rotateY("+ax+"deg) rotateX("+ay+"deg);" +
+    var ax = -($(window).innerWidth()/2- event.pageX)/30;
+    var ay = ($(window).innerHeight()/2- event.pageY)/55;
+    $('#cube').attr("style", "transform: rotateY("+ax+"deg) translateX(-50%) rotateX("+ay+"deg);" +
       "-webkit-transform: rotateY("+ax+"deg) rotateX("+ay+"deg);" +
       "-moz-transform: rotateY("+ax+"deg) rotateX("+ay+"deg)");
   })
@@ -80,10 +80,10 @@ function subtitleFade(subText) {
 
 // Change subtitle to whatever we're hovering over
 function changeSubtitle() {
-  $('#social a').mouseenter(function() {
-    subtitleFade($(this).children().attr('alt'));
+  $('.icon').mouseenter(function() {
+    subtitleFade($(this).attr('title'));
   });
-  $('#social a').mouseleave(function() {
+  $('.icon').mouseleave(function() {
     subtitleFade('Front-End Developer');
   });
 }
