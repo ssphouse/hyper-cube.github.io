@@ -2,11 +2,19 @@
  * === GENERAL PROPERTIES ===
  */
 
-html {
+html, body {
+  height: 100%;
+}
+body {
   font-family: 'Oxygen', sans-serif;
   text-align: center;
-  background: linear-gradient(#141422, #0a0a10) no-repeat center center fixed;
+  display: flex;
+  background-image: url('../documents/img/nitish-meena.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   background-size: cover;
+  margin: 0;
 }
 h1, button {
   color: white;
@@ -16,7 +24,13 @@ h1, button {
 }
 h1 {
   font-size: 50px;
-  font-size: 3.5vmax;
+  font-size: 6vmin;
+}
+#body-overlay {
+  background: rgba(255,255,255,0.5);
+  width: 100%;
+  height: 100%;
+  transition: background 0.7s cubic-bezier(0.19, 0.79, 0.44, 0.98);
 }
 .center {
   margin: 0;
@@ -28,7 +42,7 @@ h1 {
   font-size: 1.35vmax;
 }
 #front-content {
-  position: relative;
+  position: absolute;
   top: 35%;
 }
 #social a {
@@ -45,33 +59,37 @@ h1 {
 
 /* -- Navigation -- */
 .nav-bottom {
-  top: 92%;
+  display: flex;
+  justify-content: center;
+  top: 85%;
   position: absolute;
   width: 100%;
 }
 .nav-item {
   font-size: 20px;
-  font-size: 1.5vmax;
+  font-size: 2.4vmin;
   border: none;
-  padding: 0 5%;
+  height: 100px;
+  padding: 0 2%;
   outline: 0;
   background: none;
+  flex-grow: 1;
   color: white;
   transition: background 0.4s;
 }
 .nav-item:hover {
   background: rgba(255,255,255,0.3);
   text-decoration: underline;
+  cursor: pointer;
 }
 
 /*
  * === PROPERTIES FOR THE CUBE ===
  */
 .container {
-  margin: 10% auto;
-  min-width: 400px;
-  min-height: 400px;
-  position: relative;
+  position: absolute;
+  width: 33%;
+  height: 100%;
   perspective: 1000px;
   z-index: 1000;
 }
@@ -79,47 +97,49 @@ h1 {
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(0.56, 0.54, 0, 0.95)
 }
 #cube figure {
   margin: 0;
   width: 100%;
   height: 100%;
-  display: block;
+  display: flex;
+  justify-content: center;
   position: absolute;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#front-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(142, 68, 140, 0.85);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-size: cover;
+  z-index: -1;
 }
 
 /* -- Moving the sides into place -- */
-#cube .front  {
+#cube .front {
   transform: rotateY(-90deg) translateX(50%) rotateY(90deg);
-  background: #1a7941;
+  background-image: url('../documents/img/annie-spratt.jpg');
 }
-#cube .back   {
-  transform: rotateY(180deg) rotateX(90deg) translateY(50%) rotateX(-90deg);
-  background: #269253;
-}
-#cube .right  {
+#cube .right {
   transform: translateX(50%) rotateY(90deg);
-  background: #2d9a56;
+  background-image: url('../documents/img/arvee-marie.jpg');
 }
-#cube .left   {
+#cube .left {
   transform: translateX(-50%) rotateY(-90deg);
   background: #2e8e68;
 }
-#cube .top    {
-  transform: translateY(-50%) rotateX(90deg);
-  background: #44a27d;
-}
-#cube .bottom {
-  transform: translateY(50%) rotateX(-90deg);
-  background: #0a4c29;
-}
 
 #cube.show-front  {transform: rotateY(90deg)  translateX(50%) rotateY(-90deg);}
-#cube.show-back   {transform: rotateY(180deg) rotateX(90deg) translateY(50%) rotateX(-90deg);}
 #cube.show-left   {transform: rotateY(90deg)  translateX(50%);}
 #cube.show-right  {transform: rotateY(-90deg) translateX(-50%);}
-#cube.show-top    {transform: rotateX(-90deg) translateY(50%);}
-#cube.show-bottom {transform: rotateX(90deg)  translateY(-50%);}
 
 /*
  * === PARTICLE EFFECTS ===

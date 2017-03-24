@@ -1,23 +1,14 @@
 function init() {
   initCube();
-  changeParticleColor();
-  changeSides();
-  changeSubtitle();
-  moveParticle();
 }
 
 function initCube() {
-  // Init cube size. Using CSS for this breaks things on page load
   $(document).ready(function() {
-    resizeCube();
+    changeSides();
+    changeSubtitle();
   })
 
-  // Make the Container responsive
-  $(window).resize(function() {
-    resizeCube();
-  });
-
-  // Hover Effect: Rotate cube to track mouses
+  /* Hover Effect: Rotate cube to track mouses
   $(document).on("mousemove", function(event) {
     var ax = -($(window).innerWidth()/2- event.pageX)/30;
     var ay = ($(window).innerHeight()/2- event.pageY)/55;
@@ -25,14 +16,7 @@ function initCube() {
       "-webkit-transform: rotateY("+ax+"deg) rotateX("+ay+"deg);" +
       "-moz-transform: rotateY("+ax+"deg) rotateX("+ay+"deg)");
   });
-}
-
-function resizeCube() {
-  var size = ($(document).width() * 0.15).toString();
-  $('.container').css({
-    "width": size + 'px',
-    "height": size + 'px'
-  });
+  */
 }
 
 // Control which side we want facing
@@ -41,29 +25,15 @@ function changeSides() {
     switch($(this).attr('class')) {
       case 'nav-item to-front':
         $('#cube').attr('class', 'show-front');
-        break;
-      case 'nav-item to-back':
-        $('#cube').attr('class', 'show-back');
+        $('#body-overlay').css('background', 'rgba(255,255,255,0.5)');
         break;
       case 'nav-item to-left':
         $('#cube').attr('class', 'show-left');
+        $('#body-overlay').css('background', 'rgba(155,222,230,0.5)');
         break;
       case 'nav-item to-right':
-        console.log("hi");
         $('#cube').attr('class', 'show-right');
-        $('#cube').one('webkitTransitionEnd otransitionend oTransitionEnd ' +
-          'msTransitionEnd transitionend',
-          function(event) {
-            if (event.target.id == "projects") {
-              console.log("hi");
-            }
-        });
-        break;
-      case 'nav-item to-top':
-        $('#cube').attr('class', 'show-top');
-        break;
-      case 'nav-item to-bottom':
-        $('#cube').attr('class', 'show-bottom');
+        $('#body-overlay').css('background', 'rgba(230,190,155,0.5)');
         break;
     }
   });
