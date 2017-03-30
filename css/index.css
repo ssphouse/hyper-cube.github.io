@@ -16,46 +16,49 @@ body {
   background-size: cover;
   margin: 0;
 }
-h1, button {
+ul {
+  list-style: none;
+  list-style-type: none;
+  list-style-position: inside;
+  margin: 0;
+  padding: 0;
+}
+h1, button, h3 {
   color: white;
   font-weight: bold;
   text-transform: uppercase;
   text-shadow: 0 4px 4px rgba(0,0,0,0.3);
+}
+h3 {
+  font-size: 30px;
+  font-size: 5vmin;
 }
 h1 {
   font-size: 50px;
   font-size: 6vmin;
 }
 #body-overlay {
+  position: absolute;
   background: rgba(255,255,255,0.5);
   width: 100%;
   height: 100%;
   transition: background 0.7s cubic-bezier(0.19, 0.79, 0.44, 0.98);
 }
-.center {
-  margin: 0;
-  min-height: 32px;
+
+.content-container {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 67%;
+  margin-left: auto;
+  z-index: 50;
 }
-#subtitle {
-  color: rgba(255,255,255,.5);
-  font-size: 15px;
-  font-size: 1.35vmax;
+
+.project-img {
+  width: 2%;
+  height: 1%;
+  background: green;
 }
-#front-content {
-  position: absolute;
-  top: 35%;
-}
-#social a {
-  color: white;
-  font-size: 20px;
-  font-size: 2.5vmax;
-  outline: none;
-  padding: 6px;
-  opacity: 0.5;
-  transition: opacity 0.5s;
-}
-#social a:hover {opacity: 1;}
-#social {height: 32px;}
 
 /* -- Navigation -- */
 .nav-bottom {
@@ -92,12 +95,17 @@ h1 {
   height: 100%;
   perspective: 1000px;
   z-index: 1000;
+  animation-name: slide-in;
+  animation-duration: 3s;
+  animation-timing-function: cubic-bezier(1, -0.37, 0.4, 0.96);
+  animation-delay: 1.5s;
+  animation-fill-mode: forwards;
 }
 #cube {
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
-  transition: transform 0.5s cubic-bezier(0.56, 0.54, 0, 0.95)
+  transition: transform 0.5s cubic-bezier(0.56, 0.54, 0, 0.95);
 }
 #cube figure {
   margin: 0;
@@ -111,7 +119,7 @@ h1 {
   background-size: cover;
 }
 
-#front-overlay {
+.front-overlay {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -120,6 +128,7 @@ h1 {
   background-repeat: no-repeat;
   background-size: cover;
   background-size: cover;
+  transition: background .7s;
   z-index: -1;
 }
 
@@ -130,7 +139,7 @@ h1 {
 }
 #cube .right {
   transform: translateX(50%) rotateY(90deg);
-  background-image: url('../documents/img/arvee-marie.jpg');
+  background-image: url('../documents/img/mona-eendra.jpg');
 }
 #cube .left {
   transform: translateX(-50%) rotateY(-90deg);
@@ -142,15 +151,38 @@ h1 {
 #cube.show-right  {transform: rotateY(-90deg) translateX(-50%);}
 
 /*
- * === PARTICLE EFFECTS ===
+ * === CONTENT WITHIN THE CUBE ===
  */
-.particles {
-  width: 3px;
-  height: 3px;
-  position: absolute;
-  border-radius: 50%;
-  transition: all 6s ease-in-out;
+
+.center {
+  margin: 0;
+  min-height: 32px;
 }
-.particles span {
-  z-index: 1;
+#subtitle {
+  color: rgba(255,255,255,.5);
+  font-size: 15px;
+  font-size: 1.35vmax;
+}
+#front-content {
+  position: absolute;
+  top: 35%;
+}
+#social a {
+  color: white;
+  font-size: 20px;
+  font-size: 2.5vmax;
+  outline: none;
+  padding: 6px;
+  opacity: 0.5;
+  transition: opacity 0.5s;
+}
+#social a:hover {opacity: 1;}
+#social {height: 32px;}
+.site-list div {
+  height: 100%;
+  width: 100%;
+}
+@keyframes slide-in {
+  from {left: -40%;}
+  to {left: 0;}
 }

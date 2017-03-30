@@ -1,65 +1,63 @@
 <!DOCTYPE html>
 <html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <title>Michael White</title>
+    <link rel="stylesheet" href="lib/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/index.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Oxygen:700" rel="stylesheet">
+  </head>
 
-<head>
-  <meta charset="utf-8">
-  <title>Michael White</title>
-  <link rel="stylesheet" href="lib/font-awesome-4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/index.css" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Oxygen:700" rel="stylesheet">
-</head>
-
-<body>
-  <div id="body-overlay"></div>
-  <section class="container">
-    <div class="show-front" id="cube">
-
-<!-- FRONT -->
-      <figure class="front">
-        <div id="front-overlay"></div>
-        <div id="front-content">
-          <h1 class="center">MICHAEL WHITE</h1>
-          <p class="social" id="subtitle">Front-End Developer</p>
-          <div class="center" id="social">
-            <a href="https://www.github.com/hyper-cube">
-              <i class="fa fa-github icon" aria-hidden="true" title="See my projects on Github"></i></a>
-            <a href="https://www.twitter.com/cubicledev">
-              <i class="fa fa-twitter icon" aria-hidden="true" title="Follow me on Twitter"></i></a>
-            <a href="https://google.com">
-              <i class="fa fa-file-text icon" aria-hidden="true" title="Check out my resume"></i></a>
-          </div>
-        </div>
-        <div class="nav-bottom">
-          <button class="nav-item to-left">EXPERIENCE</button>
-          <button class="nav-item to-right" id="projects">PROJECTS</button>
-        </div>
-      </figure>
-
-<!-- LEFT -->
-      <figure class="left">
-        <div class="nav-bottom">
-          <button class="nav-item to-front">BACK</button>
-        </div>
-      </figure>
-
-<!-- RIGHT -->
-      <figure class="right">
-        <div id="front-overlay"></div>
-        <h1>PROJECTS</h1>
-        <div class="nav-bottom">
-          <button class="nav-item to-front">BACK</button>
-        </div>
-      </figure>
+  <body>
+<!-- CONTENT: Projects -->
+    <div class="content-container">
+      <img class="project-img" src="documents/img/projects/test.png" />
     </div>
-  </section>
-
-<!-- PARTICLE EFFECTS -->
-  <div class="particle-container"></div>
-
-  <script
-  src="https://code.jquery.com/jquery-3.1.1.min.js"
-  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-  crossorigin="anonymous"></script>
-  <script src="javascript/index.js" type="text/javascript"></script>
-</body>
+    <div id="body-overlay"></div>
+    <section class="container">
+<!-- FRONT -->
+    <div class="show-front" id="cube">
+        <figure class="front">
+          <div class="front-overlay"></div>
+          <div id="front-content">
+            <h1 class="center">MICHAEL WHITE</h1>
+            <p class="social" id="subtitle">Front-End Developer</p>
+            <div class="center" id="social">
+              <a href="https://www.github.com/hyper-cube">
+                <i class="fa fa-github icon" aria-hidden="true" title="See my projects on Github"></i></a>
+              <a href="https://www.twitter.com/cubicledev">
+                <i class="fa fa-twitter icon" aria-hidden="true" title="Follow me on Twitter"></i></a>
+              <a href="https://google.com">
+                <i class="fa fa-file-text icon" aria-hidden="true" title="Check out my resume"></i></a>
+            </div>
+          </div>
+          <div class="nav-bottom">
+            <button class="nav-item to-left">EXPERIENCE</button>
+            <button class="nav-item to-right" id="projects">PROJECTS</button>
+          </div>
+        </figure>
+<!-- LEFT -->
+        <figure class="left">
+          <div class="nav-bottom">
+            <button class="nav-item to-front">BACK</button>
+          </div>
+        </figure>
+<!-- RIGHT -->
+        <figure class="right">
+          <div class="front-overlay"></div>
+          <div id="right-content">
+            <h1 class="center">PROJECTS</h1>
+          </div>
+          <div class="nav-bottom">
+            <button class="nav-item to-front">BACK</button>
+          </div>
+        </figure>
+      </div>
+    </section>
+    <script
+    src="https://code.jquery.com/jquery-3.1.1.min.js"
+    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+    crossorigin="anonymous"></script>
+    <script src="javascript/index.js" type="text/javascript"></script>
+  </body>
 </html>

@@ -26,14 +26,17 @@ function changeSides() {
       case 'nav-item to-front':
         $('#cube').attr('class', 'show-front');
         $('#body-overlay').css('background', 'rgba(255,255,255,0.5)');
+        $('.front-overlay').css('background', 'rgba(142, 68, 140, 0.85)');
         break;
       case 'nav-item to-left':
         $('#cube').attr('class', 'show-left');
         $('#body-overlay').css('background', 'rgba(155,222,230,0.5)');
+        $('.front-overlay').css('background', 'rgba(142, 68, 140, 0.85)');
         break;
       case 'nav-item to-right':
         $('#cube').attr('class', 'show-right');
-        $('#body-overlay').css('background', 'rgba(230,190,155,0.5)');
+        $('#body-overlay').css('background', 'rgba(236, 191, 196, 0.5)');
+        $('.front-overlay').css('background', 'rgba(187, 67, 115, 0.85)');
         break;
     }
   });
