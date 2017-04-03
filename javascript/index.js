@@ -1,5 +1,6 @@
 function init() {
   initCube();
+  projectHover();
 }
 
 function initCube() {
@@ -7,26 +8,22 @@ function initCube() {
     changeSides();
     changeSubtitle();
   })
-
-  /* Hover Effect: Rotate cube to track mouses
-  $(document).on("mousemove", function(event) {
-    var ax = -($(window).innerWidth()/2- event.pageX)/30;
-    var ay = ($(window).innerHeight()/2- event.pageY)/55;
-    $('#cube').attr("style", "transform: rotateY("+ax+"deg) translateX(-50%) rotateX("+ay+"deg);" +
-      "-webkit-transform: rotateY("+ax+"deg) rotateX("+ay+"deg);" +
-      "-moz-transform: rotateY("+ax+"deg) rotateX("+ay+"deg)");
+  $('h1').click(function() {
+    $('#right-side-content').css('display', 'flex');
   });
-  */
 }
 
 // Control which side we want facing
 function changeSides() {
   $('.nav-item').click(function() {
+    $('.content-container').css('display', 'none');
+    $('.text-box').css('opacity', '0');
     switch($(this).attr('class')) {
       case 'nav-item to-front':
         $('#cube').attr('class', 'show-front');
         $('#body-overlay').css('background', 'rgba(255,255,255,0.5)');
         $('.front-overlay').css('background', 'rgba(142, 68, 140, 0.85)');
+        $('#front-side-content').css('display', 'flex');
         break;
       case 'nav-item to-left':
         $('#cube').attr('class', 'show-left');
@@ -37,9 +34,22 @@ function changeSides() {
         $('#cube').attr('class', 'show-right');
         $('#body-overlay').css('background', 'rgba(236, 191, 196, 0.5)');
         $('.front-overlay').css('background', 'rgba(187, 67, 115, 0.85)');
+        $('#right-side-content').css('display', 'flex');
+        wipeAnimation();
         break;
     }
   });
+}
+
+function wipeAnimation() {
+  $('.text-overlay').animate({
+    width: '0',
+    left: '-30%'
+  }, 0).fadeIn();
+  $('.text-overlay').animate({width: '150%'}, function() {
+    $('.text-box').css('opacity', '1');
+  });
+  $('.text-overlay').animate({left: '150%'}, 'slow').fadeOut();
 }
 
 // Fade animation for the subtitle
@@ -61,55 +71,36 @@ function changeSubtitle() {
   });
 }
 
-/*
- * Create an amount of particles on screen
- * Positions are random. opacity is random to give sense of depth
- * Todo: Move particle related stuff to another file
- */
-function initParticles() {
-  var height = $(window).height();
-  var width = $(window).width();
-
-  var particleCount = 300;
-  for(var i = 0; i < particleCount; i++) {
-    $('.particle-container').append(
-      '<span class="particles" style="top: ' + rand(1, height) + 'px; ' +
-      'left: ' + rand(1, width) +
-      'px; "</span>'
-    );
-  }
+// TODO: Preload images and pick one instead of changing src
+// that should remove the issue where images load after the fade in
+function imageFade(img) {
+  $('#project-preview').stop(true, false).fadeTo();
+  $('#project-preview').fadeTo(200, 0.001, function() {
+    $('#project-preview').attr('src', img);
+    $('#project-preview').fadeTo(700, 0.75);
+  });
 }
 
-function moveParticle() {
-  setInterval(function() {
-    $('.particles').each(function() {
-      var x = parseInt($(this).css('top').slice(0, -2)) + parseInt(rand(1, 100));
-      var y = parseInt($(this).css('left').slice(0, -2)) + parseInt(rand(-30, 100));
-      $(this).stop(true, false);
-      $(this).css('top', x.toString() + 'px');
-      $(this).css('left', y.toString() + 'px');
-    });
-  }, 4000);
+// Change the preview image based off where the link is directed
+function projectHover() {
+  $('.text-box').hover(function() {
+    switch ($(this).parent().attr('href')) {
+      case '#':
+        imageFade('documents/img/projects/test2.png');
+        break;
+    }
+  }, function() {
+    imageFade('documents/img/projects/test.png');
+  });
 }
-
-function changeParticleColor() {
-  setInterval(function() {
-    $('.particles').each(function() {
-      var red = rand(45, 60);
-      var green = rand(20, 30);
-      var blue = rand(55, 35);
-      var opacity = rand(0.4, 0.85, true);
-      $(this).css('background-color', `rgba(${red}, ${green}, ${blue}, ${opacity})`);
-    });
-  }, 6000);
-}
-
-function rand(start, end, decimal=false) {
-  var result;
-  decimal ?
-    result = (Math.random() * end).toFixed(2) :
-    result = Math.floor((Math.random() * end) + start);
-  return result.toString();
-}
-
 init();
+
+/* Hover Effect: Rotate cube to track mouses
+  $(document).on("mousemove", function(event) {
+    var ax = -($(window).innerWidth()/2- event.pageX)/30;
+    var ay = ($(window).innerHeight()/2- event.pageY)/55;
+    $('#cube').attr("style", "transform: rotateY("+ax+"deg) translateX(-50%) rotateX("+ay+"deg);" +
+      "-webkit-transform: rotateY("+ax+"deg) rotateX("+ay+"deg);" +
+      "-moz-transform: rotateY("+ax+"deg) rotateX("+ay+"deg)");
+  });
+  */

@@ -1,7 +1,6 @@
 /*
  * === GENERAL PROPERTIES ===
  */
-
 html, body {
   height: 100%;
 }
@@ -15,6 +14,7 @@ body {
   background-attachment: fixed;
   background-size: cover;
   margin: 0;
+  overflow-x: hidden;
 }
 ul {
   list-style: none;
@@ -40,6 +40,8 @@ h1 {
 a {
   text-decoration: none;
   border: 0;
+  position: relative;
+  margin: 1%;
 }
 
 /*
@@ -62,6 +64,26 @@ a {
   margin-left: auto;
   z-index: 50;
 }
+
+/* --- Front Side --- */
+#front-side-content {
+  display: none;
+}
+
+/* --- Right Side --- */
+#right-side-content {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#project-preview {
+  width: 95%;
+  height: auto;
+  position: relative;
+  opacity: 0.75;
+  bottom: 5%;
+}
 .text-box {
   position: relative;
   background: rgb(253, 249, 251);
@@ -70,6 +92,15 @@ a {
   padding: 1%;
   box-shadow: 7px 7px 0px 0px rgba(179, 103, 116, 0.73);
   transition: box-shadow 0.2s ease, bottom 0.1s ease-out;
+}
+.text-overlay {
+  position: absolute;
+  background: pink;
+  width: 0;
+  height: 100%;
+  left: -30%;
+  z-index: 1;
+  transform: skewX(-20deg);
 }
 .text-box:hover {
   bottom: 5px;
@@ -80,6 +111,12 @@ a {
 }
 .text-box h4 {font-size: 25px;}
 .text-box p  {font-size: 20px;}
+.animate {
+  animation: slide 1s cubic-bezier(0.4, 0.35, 0.12, 1.09);
+}
+.animate2 {
+  animation: retract 1s cubic-bezier(0.4, 0.35, 0.12, 1.09);
+}
 
 /*
  * === NAVIGATION ===
@@ -87,7 +124,7 @@ a {
 .nav-bottom {
   display: flex;
   justify-content: center;
-  top: 85%;
+  top: 66%;
   position: absolute;
   width: 100%;
 }
@@ -145,7 +182,6 @@ a {
   background-repeat: no-repeat;
   background-size: cover;
 }
-
 .front-overlay {
   position: absolute;
   width: 100%;
@@ -172,7 +208,6 @@ a {
   transform: translateX(-50%) rotateY(-90deg);
   background: #2e8e68;
 }
-
 #cube.show-front  {transform: rotateY(90deg)  translateX(50%) rotateY(-90deg);}
 #cube.show-left   {transform: rotateY(90deg)  translateX(50%);}
 #cube.show-right  {transform: rotateY(-90deg) translateX(-50%);}
@@ -180,7 +215,6 @@ a {
 /*
  * === CONTENT WITHIN THE CUBE ===
  */
-
 .center {
   margin: 0;
   min-height: 32px;
@@ -192,7 +226,13 @@ a {
 }
 #front-content {
   position: absolute;
-  top: 35%;
+  top: 33%;
+}
+#right-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 #social a {
   color: white;
